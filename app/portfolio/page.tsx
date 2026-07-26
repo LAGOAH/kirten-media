@@ -43,6 +43,7 @@ export default function PortfolioPage() {
 
   const bgY = useTransform(scrollYProgress, [0, 1], [0, 80]);
 
+  // Simple variants with NO transition
   const cardVariants = {
     hidden: (i: number) => ({
       opacity: 0,
@@ -53,12 +54,6 @@ export default function PortfolioPage() {
       opacity: 1,
       x: 0,
       scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 80,
-        damping: 25,
-        delay: 0.15,
-      },
     },
   };
 
@@ -118,7 +113,7 @@ export default function PortfolioPage() {
             transition={{ duration: 0.8 }}
           >
             <div className="w-20 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent mx-auto mb-8" />
-            <Heading level="h1" size="5xl" className="mb-4 font-black tracking-tight">
+            <Heading as="h1" size="5xl" className="mb-4 font-black tracking-tight">
               Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-neutral-400">Journey</span>
             </Heading>
             <Text variant="lead" className="text-neutral-400 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed">

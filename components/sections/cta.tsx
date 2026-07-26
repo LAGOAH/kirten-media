@@ -131,7 +131,7 @@ export default function CTA() {
               ease: "easeInOut",
             }}
           >
-            <Heading level="h2" size="5xl" className="mb-4 font-black tracking-tight leading-tight">
+            <Heading as="h2" size="5xl" className="mb-4 font-black tracking-tight leading-tight">
               Ready to Tell Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-amber-200 to-cyan-200">Story?</span>
             </Heading>
           </motion.div>

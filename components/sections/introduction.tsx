@@ -35,7 +35,6 @@ export default function Introduction() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -43,7 +42,6 @@ export default function Introduction() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.15 },
     },
   };
 
@@ -133,7 +131,7 @@ export default function Introduction() {
           />
 
           <motion.div variants={fadeInUp}>
-            <Heading level="h2" size="4xl" className="mb-6 font-black tracking-tight leading-tight">
+            <Heading as="h2" size="4xl" className="mb-6 font-black tracking-tight leading-tight">
               Welcome to{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-neutral-400">
                 Kirten Media.
@@ -175,7 +173,6 @@ export default function Introduction() {
             <motion.div
               key={idx}
               variants={fadeInUp}
-              whileHover={{ y: -6, transition: { duration: 0.3 } }}
               className="group relative p-8 rounded-2xl border border-white/10 bg-neutral-950/70 backdrop-blur-md hover:border-white/30 transition-all duration-500 overflow-hidden"
             >
               {/* Colored Lens Ambient Glow */}

@@ -58,7 +58,6 @@ export default function Services() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -66,7 +65,6 @@ export default function Services() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1 },
     },
   };
 
@@ -159,7 +157,7 @@ export default function Services() {
             className="w-20 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent mx-auto mb-8"
           />
           <motion.div variants={fadeInUp}>
-            <Heading level="h2" size="4xl" className="mb-4 font-black tracking-tight">
+            <Heading as="h2" size="4xl" className="mb-4 font-black tracking-tight">
               Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-neutral-400">Services</span>
             </Heading>
           </motion.div>

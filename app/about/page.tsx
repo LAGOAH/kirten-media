@@ -54,7 +54,6 @@ export default function AboutPage() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -62,7 +61,6 @@ export default function AboutPage() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.15 },
     },
   };
 
@@ -99,7 +97,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
           >
             <div className="w-20 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent mx-auto mb-8" />
-            <Heading level="h1" size="5xl" className="mb-4 font-black tracking-tight">
+            <Heading as="h1" size="5xl" className="mb-4 font-black tracking-tight">
               About <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-neutral-400">Kirten Media</span>
             </Heading>
             <Text variant="lead" className="text-neutral-400 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed">
@@ -113,7 +111,7 @@ export default function AboutPage() {
       <Section className="bg-black text-white border-t border-white/5">
         <div className="text-center max-w-3xl mx-auto">
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent mx-auto mb-8" />
-          <Heading level="h2" size="3xl" className="mb-4 font-bold tracking-tight">
+          <Heading as="h2" size="3xl" className="mb-4 font-bold tracking-tight">
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-cyan-400 to-cyan-600">Mission</span>
           </Heading>
           <Text variant="lead" className="text-neutral-400 leading-relaxed">
@@ -126,7 +124,7 @@ export default function AboutPage() {
       <Section className="bg-black text-white border-t border-white/5">
         <div className="text-center max-w-3xl mx-auto">
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-amber-400/60 to-transparent mx-auto mb-8" />
-          <Heading level="h2" size="3xl" className="mb-4 font-bold tracking-tight">
+          <Heading as="h2" size="3xl" className="mb-4 font-bold tracking-tight">
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600">Vision</span>
           </Heading>
           <Text variant="lead" className="text-neutral-400 leading-relaxed">
@@ -139,7 +137,7 @@ export default function AboutPage() {
       <Section className="bg-black text-white border-t border-white/5">
         <div className="text-center max-w-3xl mx-auto">
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent mx-auto mb-8" />
-          <Heading level="h2" size="3xl" className="mb-6 font-bold tracking-tight">
+          <Heading as="h2" size="3xl" className="mb-6 font-bold tracking-tight">
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-neutral-400">Values</span>
           </Heading>
           <div className="flex flex-wrap justify-center gap-3">
@@ -166,7 +164,7 @@ export default function AboutPage() {
         >
           <motion.div variants={fadeInUp}>
             <div className="w-16 h-px bg-gradient-to-r from-transparent via-amber-400/60 to-transparent mx-auto mb-8" />
-            <Heading level="h2" size="3xl" className="mb-4 font-bold tracking-tight">
+            <Heading as="h2" size="3xl" className="mb-4 font-bold tracking-tight">
               Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600">Team</span>
             </Heading>
           </motion.div>
@@ -185,7 +183,6 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              whileHover={{ y: -6, transition: { duration: 0.3 } }}
             >
               <Card
                 variant="outline"
@@ -198,7 +195,7 @@ export default function AboutPage() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <Heading level="h3" size="lg" className="text-white">{member.name}</Heading>
+                <Heading as="h3" size="lg" className="text-white">{member.name}</Heading>
                 <Text variant="small" className="text-cyan-400/80">{member.role}</Text>
                 <Text variant="body" className="text-neutral-400 text-sm mt-2">{member.description}</Text>
               </Card>

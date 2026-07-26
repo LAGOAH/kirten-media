@@ -41,7 +41,6 @@ export default function Portfolio() {
     offset: ["start end", "end start"],
   });
 
-  // Parallax for background glow (translation)
   const bgY = useTransform(scrollYProgress, [0, 1], [0, 80]);
 
   const cardVariants = {
@@ -54,23 +53,15 @@ export default function Portfolio() {
       opacity: 1,
       x: 0,
       scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 80,
-        damping: 25,
-        delay: 0.15,
-      },
     },
   };
 
   return (
     <Section className="relative bg-black text-white overflow-hidden py-32 md:py-44 border-t border-white/5 select-none">
+
       {/* Background Lens Effects with translation */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <motion.div
-          style={{ y: bgY }}
-          className="absolute inset-0"
-        >
+        <motion.div style={{ y: bgY }} className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black" />
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm opacity-[0.04]"
@@ -120,23 +111,36 @@ export default function Portfolio() {
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-amber-400/60 shadow-[0_0_12px_#fbbf24] animate-pulse" />
         </motion.div>
 
-        {/* Sparkle particles (tiny floating dots) */}
-        {[...Array(12)].map((_, i) => (
+        {/* Sparkle particles — fixed positions */}
+        {[
+          { top: 10, left: 15 },
+          { top: 25, left: 80 },
+          { top: 45, left: 5 },
+          { top: 60, left: 70 },
+          { top: 75, left: 30 },
+          { top: 90, left: 85 },
+          { top: 15, left: 55 },
+          { top: 40, left: 40 },
+          { top: 70, left: 10 },
+          { top: 85, left: 50 },
+          { top: 30, left: 90 },
+          { top: 55, left: 25 },
+        ].map((pos, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 rounded-full bg-white/20"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
+              top: `${pos.top}%`,
+              left: `${pos.left}%`,
             }}
             animate={{
               y: [0, -20, 0],
               opacity: [0, 0.8, 0],
             }}
             transition={{
-              duration: 3 + Math.random() * 4,
+              duration: 3 + (i % 4),
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: i * 0.4,
             }}
           />
         ))}
@@ -165,7 +169,7 @@ export default function Portfolio() {
           className="text-center mb-16"
         >
           <div className="w-20 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent mx-auto mb-8" />
-          <Heading level="h2" size="4xl" className="mb-4 font-black tracking-tight">
+          <Heading as="h2" size="4xl" className="mb-4 font-black tracking-tight">
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-neutral-400">Journey</span>
           </Heading>
           <Text variant="lead" className="text-neutral-400 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed font-normal">
@@ -209,6 +213,8 @@ export default function Portfolio() {
                 <p className="text-sm text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors">
                   {milestone.description}
                 </p>
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-[1px] bg-cyan-400/20 group-hover:w-12 group-hover:bg-cyan-400/60 transition-all duration-500" />
               </motion.div>
             </motion.div>
           ))}

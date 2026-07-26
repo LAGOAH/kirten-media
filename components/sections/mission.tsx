@@ -14,7 +14,6 @@ export default function Mission() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -22,7 +21,6 @@ export default function Mission() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.15 },
     },
   };
 
@@ -101,7 +99,7 @@ export default function Mission() {
             className="w-20 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent mx-auto mb-8"
           />
           <motion.div variants={fadeInUp}>
-            <Heading level="h2" size="4xl" className="mb-4 font-black tracking-tight">
+            <Heading as="h2" size="4xl" className="mb-4 font-black tracking-tight">
               Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-neutral-400">Foundation</span>
             </Heading>
           </motion.div>
@@ -123,7 +121,6 @@ export default function Mission() {
           {/* Vision Card */}
           <motion.div
             variants={fadeInUp}
-            whileHover={{ y: -6, transition: { duration: 0.3 } }}
             className="group relative p-8 rounded-2xl border border-white/20 bg-neutral-800/80 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-500 h-full overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -140,7 +137,6 @@ export default function Mission() {
           {/* Mission Card */}
           <motion.div
             variants={fadeInUp}
-            whileHover={{ y: -6, transition: { duration: 0.3 } }}
             className="group relative p-8 rounded-2xl border border-white/20 bg-neutral-800/80 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-500 h-full overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -157,7 +153,6 @@ export default function Mission() {
           {/* Values Card */}
           <motion.div
             variants={fadeInUp}
-            whileHover={{ y: -6, transition: { duration: 0.3 } }}
             className="group relative p-8 rounded-2xl border border-white/20 bg-neutral-800/80 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-500 h-full overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />

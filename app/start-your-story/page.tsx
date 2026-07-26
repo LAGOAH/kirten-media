@@ -10,7 +10,7 @@ export default function StartYourStoryPage() {
       <Section className="min-h-[40vh] flex items-center justify-center bg-black text-white border-b border-white/5">
         <div className="text-center max-w-4xl mx-auto">
           <div className="w-12 h-px bg-white/20 mx-auto mb-6" />
-          <Heading level="h1" size="5xl" className="mb-4">
+          <Heading as="h1" size="5xl" className="mb-4">
             Start Your Story
           </Heading>
           <Text variant="lead" className="text-neutral-400">
@@ -23,7 +23,7 @@ export default function StartYourStoryPage() {
       <Section className="bg-black text-white">
         <div className="max-w-2xl mx-auto">
           <Card variant="outline" className="border-neutral-800 bg-neutral-900/30 p-8">
-            <Heading level="h2" size="2xl" className="mb-2">
+            <Heading as="h2" size="2xl" className="mb-2">
               Tell Us About Your Project
             </Heading>
             <Text variant="body" className="text-neutral-400 mb-6">

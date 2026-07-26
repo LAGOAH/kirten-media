@@ -95,7 +95,7 @@ export default function Promise() {
           className="text-center mb-12"
         >
           <div className="w-20 h-[1px] bg-gradient-to-r from-transparent via-amber-400/60 to-transparent mx-auto mb-8" />
-          <Heading level="h2" size="4xl" className="mb-4 font-black tracking-tight">
+          <Heading as="h2" size="4xl" className="mb-4 font-black tracking-tight">
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600">Promise</span>
           </Heading>
         </motion.div>
@@ -146,7 +146,6 @@ export default function Promise() {
             hidden: { opacity: 0 },
             visible: {
               opacity: 1,
-              transition: { staggerChildren: 0.2 },
             },
           }}
           className="text-center max-w-3xl mx-auto"
@@ -157,7 +156,6 @@ export default function Promise() {
               visible: {
                 opacity: 1,
                 y: 0,
-                transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
               },
             }}
           >
@@ -172,7 +170,6 @@ export default function Promise() {
               visible: {
                 opacity: 1,
                 y: 0,
-                transition: { duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
               },
             }}
           >
@@ -189,7 +186,6 @@ export default function Promise() {
               visible: {
                 opacity: 1,
                 y: 0,
-                transition: { duration: 0.8, delay: 0.4 },
               },
             }}
             className="mt-8 pt-8 border-t border-white/5"

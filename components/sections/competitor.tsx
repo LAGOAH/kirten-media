@@ -36,7 +36,6 @@ export default function Competitor() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -45,7 +44,6 @@ export default function Competitor() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -126,7 +124,7 @@ export default function Competitor() {
           className="text-center mb-16"
         >
           <div className="w-20 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent mx-auto mb-8" />
-          <Heading level="h2" size="4xl" className="mb-4 font-black tracking-tight">
+          <Heading as="h2" size="4xl" className="mb-4 font-black tracking-tight">
             The <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-neutral-400">Difference</span>
           </Heading>
           <Text variant="lead" className="text-neutral-400 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed font-normal">
@@ -147,7 +145,7 @@ export default function Competitor() {
             <div className="h-full p-8 rounded-2xl border border-white/10 bg-neutral-900/40 backdrop-blur-sm hover:border-red-500/30 transition-all duration-500 group relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="text-xs font-mono text-red-400/60 mb-4 tracking-widest">TRADITIONAL</div>
-              <Heading level="h3" size="lg" className="text-neutral-400 mb-6">
+              <Heading as="h3" size="lg" className="text-neutral-400 mb-6">
                 Agencies
               </Heading>
               <ul className="space-y-4">
@@ -188,7 +186,7 @@ export default function Competitor() {
             <div className="h-full p-8 rounded-2xl border border-cyan-400/20 bg-cyan-500/5 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-500 group relative overflow-hidden shadow-[0_0_40px_rgba(34,211,238,0.05)]">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="text-xs font-mono text-cyan-400/60 mb-4 tracking-widest">KIRTEN MEDIA</div>
-              <Heading level="h3" size="lg" className="text-white mb-6">
+              <Heading as="h3" size="lg" className="text-white mb-6">
                 Strategic Partner
               </Heading>
               <ul className="space-y-4">

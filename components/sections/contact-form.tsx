@@ -1,12 +1,55 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
 
 export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong.");
+      }
+
+      setStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(
+        error instanceof Error ? error.message : "Something went wrong."
+      );
+    }
+  };
+
   return (
     <Section className="relative bg-black text-white py-32 md:py-44 border-t border-white/5 select-none">
       <div className="max-w-4xl mx-auto px-6">
@@ -33,7 +76,7 @@ export default function ContactForm() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-2xl mx-auto"
         >
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-neutral-300 mb-2">
                 Your Name
@@ -41,6 +84,9 @@ export default function ContactForm() {
               <input
                 type="text"
                 id="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
                 className="w-full px-4 py-3 bg-neutral-900/80 border border-white/10 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:border-white/30 transition-colors"
                 placeholder="Enter your name"
               />
@@ -53,8 +99,25 @@ export default function ContactForm() {
               <input
                 type="email"
                 id="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
                 className="w-full px-4 py-3 bg-neutral-900/80 border border-white/10 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:border-white/30 transition-colors"
                 placeholder="Enter your email"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="subject" className="block text-sm font-medium text-neutral-300 mb-2">
+                Subject
+              </label>
+              <input
+                type="text"
+                id="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                className="w-full px-4 py-3 bg-neutral-900/80 border border-white/10 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:border-white/30 transition-colors"
+                placeholder="Documentary, brand film, consultation..."
               />
             </div>
 
@@ -65,6 +128,9 @@ export default function ContactForm() {
               <textarea
                 id="message"
                 rows={5}
+                value={formData.message}
+                onChange={handleChange}
+                required
                 className="w-full px-4 py-3 bg-neutral-900/80 border border-white/10 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:border-white/30 transition-colors resize-none"
                 placeholder="Tell us about your vision, goals, and how we can help..."
               />
@@ -72,10 +138,23 @@ export default function ContactForm() {
 
             <button
               type="submit"
-              className="w-full px-8 py-4 rounded-xl bg-white text-black font-semibold hover:bg-neutral-200 transition-colors duration-300"
+              disabled={status === "sending"}
+              className="w-full px-8 py-4 rounded-xl bg-white text-black font-semibold hover:bg-neutral-200 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Message
+              {status === "sending" ? "Sending..." : "Send Message"}
             </button>
+
+            {status === "success" && (
+              <p className="text-center text-emerald-400 text-sm">
+                ✅ Message sent successfully. We'll get back to you soon!
+              </p>
+            )}
+
+            {status === "error" && (
+              <p className="text-center text-red-400 text-sm">
+                ❌ {errorMessage}
+              </p>
+            )}
           </form>
         </motion.div>
       </div>

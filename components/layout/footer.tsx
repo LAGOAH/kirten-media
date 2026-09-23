@@ -22,6 +22,12 @@ const YouTubeIcon = () => (
   </svg>
 );
 
+const XIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93zm-1.3 19.5h2.04L6.48 3.24H4.3z" />
+  </svg>
+);
+
 const MapPinIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z" />
@@ -32,6 +38,7 @@ const MapPinIcon = () => (
 const socialLinks = [
   { icon: <InstagramIcon />, href: "https://www.instagram.com/kirtenmedia/", label: "Instagram" },
   { icon: <FacebookIcon />, href: "https://facebook.com/share/1HW5Kg4o4o/?mibextid=wwXIfr", label: "Facebook" },
+  { icon: <XIcon />, href: "https://x.com/kirtenmedia", label: "X (Twitter)" },
   { icon: <YouTubeIcon />, href: "https://www.youtube.com/@Kirtenmedia", label: "YouTube" },
 ];
 
@@ -56,24 +63,23 @@ export function Footer() {
         {/* Social + Address */}
         <div className="py-10 border-b border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
 
-          <div className="flex flex-wrap items-center gap-5">
-            <div className="flex items-center gap-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="text-neutral-400 hover:text-white transition-colors"
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
-            <span className="text-sm text-neutral-500">@kirtenmedia</span>
+          {/* Left: Social icons only */}
+          <div className="flex items-center gap-4">
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="text-neutral-400 hover:text-white transition-colors"
+              >
+                {social.icon}
+              </a>
+            ))}
           </div>
 
+          {/* Right: Address */}
           <div className="flex items-start gap-2 text-sm text-neutral-500">
             <span className="text-cyan-400/70 mt-0.5 flex-shrink-0">
               <MapPinIcon />

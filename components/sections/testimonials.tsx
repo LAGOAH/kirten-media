@@ -12,6 +12,18 @@ const testimonials = [
     role: "CEO, Ladies Alive",
     image: "/images/testimonials/gaus-dorcas.png",
   },
+  {
+    quote: "On behalf of Kuteb Awareness Network (KAN), I proudly testify to the professionalism, dedication, and creativity of Kirten Media in our partnership on The Burning Fire movie project. Our collaboration was a remarkable success, driven by a shared vision of preserving Kuteb heritage through film. Kirten Media demonstrated exceptional commitment, teamwork, and excellence, contributing immensely to the successful delivery of this historic cultural project. We deeply appreciate this partnership and look forward to greater achievements together.",
+    author: "Chief William Rimamchika",
+    role: "Coordinator, Kuteb Awareness Network (KAN)",
+    image: "/images/testimonials/William-Rimamchika.png",
+  },
+  {
+    quote: "First, I would like to share my personal experience with Kirten Media. Before I came across Kirten Media, I have had challenges looking for a reliable source that covers events, creates awareness, and can bring to life present and even past stories through the media. However, my experience with Kirten Media was exceptional. The level of attention, professionalism, and support I received was second to none. I was genuinely impressed because the result was completely beyond what I expected, and I am grateful to have worked with Kirten Media. Because of my personal experience, I can boldly recommend Kirten Media to anyone looking to have a wonderful experience.",
+    author: "Manasseh Tuktur",
+    role: "Sportsperson",
+    image: "/images/testimonials/Manasseh-Tuktur.png",
+  },
 ];
 
 const sparkles = [
@@ -66,7 +78,6 @@ export default function Testimonials() {
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-amber-400/60 shadow-[0_0_12px_#fbbf24] animate-pulse" />
         </motion.div>
 
-        {/* Sparkle particles — FIXED positions, no Math.random() */}
         {sparkles.map((pos, i) => (
           <motion.div
             key={i}
@@ -95,7 +106,7 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <div className="w-20 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent mx-auto mb-8" />
           <Heading as="h2" size="4xl" className="mb-4 font-black tracking-tight">
@@ -113,10 +124,10 @@ export default function Testimonials() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: idx * 0.15 }}
               className="group relative p-8 rounded-2xl border border-white/10 bg-neutral-900/50 backdrop-blur-sm hover:border-cyan-400/30 transition-all duration-500"
             >
-              <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
                 <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-cyan-400/30 flex-shrink-0 shadow-[0_0_30px_rgba(34,211,238,0.15)]">
                   <img
                     src={testimonial.image}
@@ -130,7 +141,7 @@ export default function Testimonials() {
                   <p className="text-base md:text-lg text-neutral-200 italic leading-relaxed">
                     {testimonial.quote}
                   </p>
-                  <div className="mt-4">
+                  <div className="mt-6">
                     <p className="text-white font-semibold">{testimonial.author}</p>
                     <p className="text-xs text-neutral-400 uppercase tracking-wider">
                       {testimonial.role}

@@ -14,7 +14,6 @@ export default function Promise() {
   });
 
   const bgY = useTransform(scrollYProgress, [0, 1], [0, 50]);
-  const sealRotate = useTransform(scrollYProgress, [0, 0.5], [0, 360]);
 
   return (
     <Section className="relative bg-black text-white overflow-hidden py-32 md:py-44 border-t border-white/5 select-none">
@@ -32,7 +31,6 @@ export default function Promise() {
           />
         </motion.div>
 
-        {/* Cyan Lens Flare */}
         <motion.div
           animate={{
             scale: [1, 1.2, 1],
@@ -43,7 +41,6 @@ export default function Promise() {
           className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-cyan-500/15 rounded-full blur-[140px]"
         />
 
-        {/* Amber Lens Flare */}
         <motion.div
           animate={{
             scale: [1, 1.3, 1],
@@ -54,20 +51,11 @@ export default function Promise() {
           className="absolute -bottom-20 -right-20 w-[600px] h-[600px] bg-amber-500/12 rounded-full blur-[160px]"
         />
 
-        {/* Rotating Rings */}
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] rounded-full border border-dashed border-white/10 opacity-30 pointer-events-none"
         />
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] rounded-full border border-white/5 opacity-40 pointer-events-none"
-        >
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-cyan-400/60 shadow-[0_0_12px_#22d3ee] animate-pulse" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-amber-400/60 shadow-[0_0_12px_#fbbf24] animate-pulse" />
-        </motion.div>
       </div>
 
       {/* Floating Badge */}
@@ -100,7 +88,7 @@ export default function Promise() {
           </Heading>
         </motion.div>
 
-        {/* Promise Seal / Badge (centerpiece) */}
+        {/* Promise Seal */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -109,20 +97,17 @@ export default function Promise() {
           className="flex justify-center mb-12"
         >
           <div className="relative">
-            {/* Outer ring - rotating */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
               className="absolute -inset-4 rounded-full border-2 border-dashed border-amber-400/30"
             />
-            {/* Inner ring - rotating opposite */}
             <motion.div
               animate={{ rotate: -360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               className="absolute -inset-8 rounded-full border border-amber-400/10"
             />
 
-            {/* Center Seal */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
@@ -137,7 +122,7 @@ export default function Promise() {
           </div>
         </motion.div>
 
-        {/* Promise Text with Reveal */}
+        {/* Promise Text */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -146,6 +131,7 @@ export default function Promise() {
             hidden: { opacity: 0 },
             visible: {
               opacity: 1,
+              transition: { staggerChildren: 0.2 },
             },
           }}
           className="text-center max-w-3xl mx-auto"
@@ -156,6 +142,7 @@ export default function Promise() {
               visible: {
                 opacity: 1,
                 y: 0,
+                transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
               },
             }}
           >
@@ -170,6 +157,7 @@ export default function Promise() {
               visible: {
                 opacity: 1,
                 y: 0,
+                transition: { duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
               },
             }}
           >
@@ -179,13 +167,13 @@ export default function Promise() {
             </Text>
           </motion.div>
 
-          {/* Tagline */}
           <motion.div
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: {
                 opacity: 1,
                 y: 0,
+                transition: { duration: 0.8, delay: 0.4 },
               },
             }}
             className="mt-8 pt-8 border-t border-white/5"

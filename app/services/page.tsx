@@ -60,7 +60,7 @@ export default function ServicesPage() {
             <img
               src="/images/kirtenmedialogo.png"
               alt="Kirten Media"
-              className="h-16 md:h-20 w-auto object-contain filter invert brightness-0 contrast-100"
+              className="h-16 md:h-20 w-auto object-contain"
             />
           </div>
 

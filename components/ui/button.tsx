@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { tokens } from "@/lib/tokens";
 
 type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";

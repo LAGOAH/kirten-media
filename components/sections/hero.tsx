@@ -1,101 +1,110 @@
 "use client";
 
-import React from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function Hero() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-
-  const logoRotateX = useTransform(springY, [-0.5, 0.5], ["14deg", "-14deg"]);
-  const logoRotateY = useTransform(springX, [-0.5, 0.5], ["-14deg", "14deg"]);
-
-  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - left) / width - 0.5;
-    const y = (e.clientY - top) / height - 0.5;
-    mouseX.set(x);
-    mouseY.set(y);
-  }
+  const headlineWords = ["We", "are", "a", "strategic", "visual", "storytelling", "company."];
+  const subtitleWords = [
+    "That", "partners", "with", "institutions,", "organizations,", "brands,",
+    "and", "visionary", "individuals", "to", "communicate", "ideas,",
+    "preserve", "stories,", "strengthen", "public", "trust,",
+    "and", "inspire", "meaningful", "action."
+  ];
 
   return (
-    <main
-      onMouseMove={handleMouseMove}
-      className="relative min-h-screen bg-black text-white flex items-center px-6 overflow-hidden pt-28 pb-16 select-none"
-    >
-      {/* Film Grain */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
+    <section className="relative bg-black text-white flex items-center justify-center px-6 py-12 md:py-16 overflow-hidden">
 
-      {/* Spotlight */}
+      {/* Ambient glow */}
       <motion.div
-        className="absolute w-[700px] h-[700px] bg-gradient-to-r from-white/10 to-neutral-500/10 rounded-full blur-[160px] pointer-events-none -translate-x-1/2 -translate-y-1/2"
-        style={{
-          left: useTransform(springX, [-0.5, 0.5], ["25%", "75%"]),
-          top: useTransform(springY, [-0.5, 0.5], ["25%", "75%"]),
-        }}
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 0.15, scale: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/10 rounded-full blur-[140px] pointer-events-none"
       />
 
-      {/* Grid */}
-      <div
-        className="absolute inset-0 opacity-10 pointer-events-none"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.4) 1px, transparent 0)`,
-          backgroundSize: "48px 48px",
-        }}
-      />
+      <div className="relative max-w-5xl mx-auto text-center">
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-0 pointer-events-none" />
+        {/* Headline — word-by-word ZOOM IN with impact */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05] mb-6">
+          {headlineWords.map((word, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, scale: 2.5, y: 40, filter: "blur(12px)" }}
+              animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+              transition={{
+                duration: 0.8,
+                delay: 0.12 * i,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="inline-block mr-2 md:mr-3 text-white"
+            >
+              {word}
+            </motion.span>
+          ))}
+        </h1>
 
-      {/* Main Container */}
-      <div className="relative z-10 max-w-7xl w-full mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        {/* Shake divider — dramatic line with wobble */}
+        <motion.div
+          initial={{ width: 0, opacity: 0 }}
+          animate={{
+            width: "80px",
+            opacity: 1,
+            x: [0, -3, 3, -2, 2, 0],
+          }}
+          transition={{
+            width: { duration: 0.9, delay: 1.0, ease: "easeOut" },
+            opacity: { duration: 0.9, delay: 1.0 },
+            x: { duration: 0.6, delay: 1.9, ease: "easeInOut" },
+          }}
+          className="h-[2px] bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"
+        />
 
-        {/* LEFT: Interactive Logo (expands on hover) */}
-        <div className="flex-shrink-0 w-full lg:w-auto flex justify-center lg:justify-start perspective-1000">
-          <motion.div
-            style={{
-              rotateX: logoRotateX,
-              rotateY: logoRotateY,
-              transformStyle: "preserve-3d",
-            }}
-            whileHover={{ scale: 1.08 }}
-            transition={{ type: "spring", stiffness: 200, damping: 15 }}
-            className="relative cursor-pointer group p-8"
-          >
-            <div className="absolute inset-0 rounded-3xl bg-white/5 blur-3xl group-hover:bg-white/20 transition-all duration-700" />
+        {/* Subtitle — words fly in from random directions with shake */}
+        <p className="text-base sm:text-lg md:text-xl text-white max-w-3xl mx-auto leading-relaxed font-bold">
+          {subtitleWords.map((word, i) => {
+            const directions = [
+              { x: -40, y: 0 },
+              { x: 40, y: 0 },
+              { x: 0, y: 30 },
+              { x: 0, y: -30 },
+              { x: 30, y: 20 },
+              { x: -30, y: -20 },
+            ];
+            const dir = directions[i % directions.length];
 
-            <img
-              src="/images/kirtenmedialogo.png"
-              alt="Kirten Media Logo"
-              className="relative w-48 sm:w-56 md:w-64 lg:w-80 h-auto object-contain filter invert brightness-0 contrast-100 drop-shadow-[0_25px_35px_rgba(255,255,255,0.25)]"
-            />
-          </motion.div>
-        </div>
-
-        {/* RIGHT: Text */}
-        <div className="flex-1 text-center lg:text-left">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6"
-          >
-            Welcome to <span className="text-white">Kirten Media.</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-base sm:text-lg text-neutral-400 max-w-xl leading-relaxed mx-auto lg:mx-0"
-          >
-            We are a strategic visual storytelling company that partners with institutions, organizations, brands, and visionary individuals to communicate ideas, preserve stories, strengthen public trust, and inspire meaningful action.
-          </motion.p>
-        </div>
+            return (
+              <motion.span
+                key={i}
+                initial={{
+                  opacity: 0,
+                  x: dir.x,
+                  y: dir.y,
+                  scale: 1.5,
+                  rotate: (i % 2 === 0 ? -8 : 8),
+                  filter: "blur(8px)",
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                  y: 0,
+                  scale: 1,
+                  rotate: 0,
+                  filter: "blur(0px)",
+                }}
+                transition={{
+                  duration: 0.7,
+                  delay: 1.2 + 0.045 * i,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="inline-block mr-1.5"
+              >
+                {word}
+              </motion.span>
+            );
+          })}
+        </p>
 
       </div>
-    </main>
+    </section>
   );
 }
